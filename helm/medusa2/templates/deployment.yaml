@@ -40,6 +40,13 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          env:
+          - name: DEPLOYED_AT
+            value: "{{ now | date "20060102150405" }}"
+          {{- range .Values.env }}
+          - name: {{ .name | quote }}
+            value: {{ .value | quote }}
+          {{- end }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
@@ -49,13 +56,6 @@ spec:
           {{- with .Values.volumeMounts }}
           volumeMounts:
             {{- toYaml . | nindent 12 }}
-          env:
-          - name: DEPLOYED_AT
-            value: "{{ now | date "20060102150405" }}"
-          {{- range .Values.env }}
-          - name: {{ .name | quote }}
-            value: {{ .value | quote }}
-          {{- end }}  
           {{- end }}
       {{- with .Values.volumes }}
       volumes:

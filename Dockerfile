@@ -1,4 +1,4 @@
-FROM node:22.4-alpine AS base
+FROM node:20-alpine AS base
 
 RUN apk update
 
@@ -12,4 +12,4 @@ RUN yarn install && yarn build
 
 ENV PORT=80
 
-CMD ["yarn", "start"]
+CMD ["yarn", "start:prod"]
