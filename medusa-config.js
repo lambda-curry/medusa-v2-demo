@@ -18,4 +18,7 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || 'supersecret',
     },
   },
+  admin: {
+    backendUrl: process.env.ADMIN_BACKEND_URL,
+  },
 });

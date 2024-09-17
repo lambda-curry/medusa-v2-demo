@@ -6,9 +6,13 @@ RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 
+COPY package.json yarn.lock ./
+
+RUN yarn install
+
 COPY . .
 
-RUN yarn install && yarn build
+RUN yarn build
 
 ENV PORT=80
 
