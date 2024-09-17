@@ -10,5 +10,5 @@ export async function GET(
   //   ContainerRegistrationKeys.ORDER_SERVICE
   // );
 
-  res.json({ message: 'Hello World' });
+  res.json({ message: 'Hello' });
 }
